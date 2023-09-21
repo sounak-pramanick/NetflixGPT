@@ -2,14 +2,23 @@ import React, { useRef, useState } from 'react';
 import Header from './Header';
 import { checkValidData } from '../utils/validate';
 import { auth } from '../utils/firebase';
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { addUser } from '../utils/userSlice';
+import { NETFLIX_BG, USER_AVATAR } from '../utils/constants';
 
 const Login = () => {
   const [isSignInForm, setIsSignForm] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
 
+  const navigate = useNavigate();
+
+  const dispatch = useDispatch();
+
   const email = useRef(null);
   const password = useRef(null);
+  const name = useRef(null);
 
   const toggleSignInForm = () => setIsSignForm(!isSignInForm);
 
@@ -27,6 +36,18 @@ const Login = () => {
           // Signed in
           const user = userCredential.user;
           console.log(user);
+
+          updateProfile(user, {
+            displayName: name.current.value,
+            photoURL: USER_AVATAR
+          }).then(() => {
+            // Profile updated!
+            const { uid, email, displayName, photoURL } = user;
+            dispatch(addUser({uid, email, displayName, photoURL}));
+          }).catch((error) => {
+            // An error occurred
+            setErrorMessage(error.message);
+          });
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -41,6 +62,7 @@ const Login = () => {
           // Signed in 
           const user = userCredential.user;
           console.log(user);
+          navigate("/browse");
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -56,7 +78,7 @@ const Login = () => {
       <Header />
       <div className="absolute w-screen h-screen">
         <img 
-          src="https://assets.nflxext.com/ffe/siteui/vlv3/dc1cf82d-97c9-409f-b7c8-6ac1718946d6/14a8fe85-b6f4-4c06-8eaf-eccf3276d557/IN-en-20230911-popsignuptwoweeks-perspective_alpha_website_medium.jpg" 
+          src={NETFLIX_BG}
           alt="netflix-background"
           className="w-full h-full bg-cover"
         />
@@ -71,6 +93,7 @@ const Login = () => {
           </h1>
           {!isSignInForm && <input 
             type="text" 
+            ref={name}
             placeholder="Full Name" 
             className="p-4 my-4 rounded-md w-full mx-auto bg-gray-800 outline-none" 
           />}
