@@ -8,6 +8,6 @@ export const API_OPTIONS = {
     method: 'GET', 
     headers: {
         accept: 'application/json', 
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkMzJmMTM1NmQyMDczYmNkNDJjMDYxZjIxMWU4MGExZiIsInN1YiI6IjYzOWFmMTYzMGYwZGE1MDA3ZDg5Njk0OSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.RCeIoeGB5TDYSTP5BnksLpAHeMilpAepNqv-1B8JhbI'
+        Authorization: `Bearer ${process.env.REACT_APP_MOVIE_API_KEY}`
     }
 };
