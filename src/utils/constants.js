@@ -4,10 +4,12 @@ export const USER_AVATAR = "https://occ-0-6247-2164.1.nflxso.net/dnm/api/v6/K6hj
 
 export const NETFLIX_BG = "https://assets.nflxext.com/ffe/siteui/vlv3/dc1cf82d-97c9-409f-b7c8-6ac1718946d6/14a8fe85-b6f4-4c06-8eaf-eccf3276d557/IN-en-20230911-popsignuptwoweeks-perspective_alpha_website_medium.jpg" ;
 
+
+const apiKey = process.env.REACT_APP_API_KEY;
 export const API_OPTIONS = {
     method: 'GET', 
     headers: {
         accept: 'application/json', 
-        Authorization: `Bearer ${process.env.REACT_APP_MOVIE_API_KEY}`
+        Authorization: `Bearer ${apiKey}`
     }
 };
