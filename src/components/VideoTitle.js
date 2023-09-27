@@ -4,9 +4,9 @@ import { AiOutlineInfoCircle } from 'react-icons/ai';
 
 const VideoTitle = ({ title, overview }) => {
   return (
-    <div className="absolute pt-[20%] px-12 bg-gradient-to-r from-black w-screen aspect-video text-white">
-        <h1 className="text-6xl font-bold">{title}</h1>
-        <p className="text-lg w-1/4 py-6">{overview}</p>
+    <div className="absolute top-0 pt-[15%] px-12 bg-gradient-to-r from-black w-screen aspect-video text-white">
+        <h1 className="text-5xl font-bold">{title}</h1>
+        <p className="text-md w-1/4 py-6">{overview}</p>
         <div className="flex">
             <button className="flex justify-center items-center bg-white hover:bg-opacity-80 text-black px-4 py-2 rounded-md">
                 <FaPlay className="text-lg mr-2" />
