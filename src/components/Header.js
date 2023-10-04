@@ -59,7 +59,7 @@ const Header = () => {
       <img
         src={NETFLIX_LOGO}
         alt="logo"
-        className="w-44"
+        className="w-44 cursor-pointer"
       />
       {user && 
         <div
