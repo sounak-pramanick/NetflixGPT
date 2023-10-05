@@ -35,7 +35,7 @@ const Login = () => {
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
-          console.log(user);
+          // console.log(user);
 
           updateProfile(user, {
             displayName: name.current.value,
@@ -61,7 +61,7 @@ const Login = () => {
         .then((userCredential) => {
           // Signed in 
           const user = userCredential.user;
-          console.log(user);
+          // console.log(user);
           navigate("/browse");
         })
         .catch((error) => {
@@ -80,14 +80,14 @@ const Login = () => {
         <img 
           src={NETFLIX_BG}
           alt="netflix-background"
-          className="w-full h-full bg-cover"
+          className="h-screen object-cover md:h-full md:w-full"
         />
       </div>
       <form 
-        className="absolute bg-black bg-opacity-90 text-white w-3/12 mx-auto right-0 left-0 my-36 p-8"
+        className="absolute bg-black bg-opacity-90 text-white w-3/4 md:w-3/12 mx-auto right-0 left-0 my-36 p-8"
       >
           <h1 
-            className="font-bold text-3xl py-4"
+            className="font-bold text-xl md:text-3xl py-2 md:py-4"
           >
             {isSignInForm? "Sign In" : "Sign Up"}
           </h1>
@@ -95,22 +95,22 @@ const Login = () => {
             type="text" 
             ref={name}
             placeholder="Full Name" 
-            className="p-4 my-4 rounded-md w-full mx-auto bg-gray-800 outline-none" 
+            className="p-2 md:p-4 my-3 md:my-4 rounded-md w-full mx-auto bg-gray-800 outline-none" 
           />}
           <input 
             type="text" 
             ref={email}
             placeholder="Email or phone number" 
-            className="p-4 my-4 rounded-md w-full mx-auto bg-gray-800 outline-none" 
+            className="p-2 md:p-4 my-3 md:my-4 rounded-md w-full mx-auto bg-gray-800 outline-none" 
           />
           <input 
             type="password" 
             ref={password}
             placeholder="Password" 
-            className="p-4 my-4 rounded-md w-full mx-auto bg-gray-800 outline-none" 
+            className="p-2 md:p-4 my-3 md:my-4 rounded-md w-full mx-auto bg-gray-800 outline-none" 
           />
           <button 
-            className="p-4 my-6 bg-[#e50914] text-lg text-white rounded-md w-full mx-auto"
+            className="p-2 md:p-4 my-6 bg-[#e50914] text-sm md:text-lg text-white rounded-md w-full mx-auto"
             onClick={handleButtonClick}
           >
             {isSignInForm? "Sign In" : "Sign Up"}
